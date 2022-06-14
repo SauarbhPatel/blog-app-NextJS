@@ -1,39 +1,43 @@
-import React from "react";
-import { useRouter } from "next/router";
+import React, { useState } from "react";
+// import { useRouter } from "next/router";
 import styles from "../../styles/Home.module.css";
-
 
 //  Step 1 : Find the file corresponding to the slug
 //  Step 2 : Populate them inside the page
 
-const slug = () => {
+const slug = (props) => {
+  const [blog, setBlog] = useState(props.myblog);
 
-  const router = useRouter();
-  const { slug } = router.query;
   return (
     <>
       <style jsx>
         {`
-        p{
-          max-width:900px;
-        }
+          p {
+            max-width: 900px;
+          }
         `}
       </style>
       <div className={styles.comtainer}>
         <main className={styles.main}>
-          <h1>Title of the page {slug}</h1>
+          <h1> {blog && blog.title}</h1>
           <hr />
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere non
-            ea perferendis voluptate officia at adipisci explicabo quos ratione.
-            Magni, quas debitis? Minima dicta esse quaerat vel. Quo vero dicta
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim alias magni sint sed eaque odit necessitatibus impedit debitis quis nulla. Et rem repellat dolorem dolorum aliquam saepe vitae iure dolore.
-            
-          </p>
+          <p>{blog && blog.content}</p>
         </main>
       </div>
     </>
   );
 };
+
+// server side redering
+export async function getServerSideProps(context) {
+  const { slug } = context.query;
+
+  let data = await fetch(`http://localhost:3000/api/getblog?slug=${slug}`);
+  let myblog = await data.json();
+
+  return {
+    props: { myblog }, //will be passed to the oage component as props
+  };
+}
 
 export default slug;

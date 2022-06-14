@@ -5,19 +5,20 @@ import Link from "next/link";
 
 //  Step 1 : Collect all the files from blogdata directory
 //  Step 2 : Iterate through the and Display them
-const Blog = () => {
-  const [blogs, setBlogs] = useState([]);
+const Blog = (props) => {
+  console.log(props);
+  const [blogs, setBlogs] = useState(props.allBlogs);
 
-  useEffect(() => {
-    fetch("http://localhost:3000/api/blogs")
-      .then((a) => {
-        return a.json();
-      })
-      .then((parsed) => {
-        console.log(parsed);
-        setBlogs(parsed);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://localhost:3000/api/blogs")
+  //     .then((a) => {
+  //       return a.json();
+  //     })
+  //     .then((parsed) => {
+  //       // console.log(parsed);
+  //       setBlogs(parsed);
+  //     });
+  // }, []);
 
   return (
     <>
@@ -40,23 +41,20 @@ const Blog = () => {
               </div>
             );
           })}
-          {/* 
-          <div className="blogItem">
-            <h3 className={stylesBlog.blogheading}>
-              How to learn JavaScript in 2022?
-            </h3>
-            <p>JavaScript is the language used to degign logic for the web</p>
-          </div>
-          <div className="blogItem">
-            <h3 className={stylesBlog.blogheading}>
-              How to learn JavaScript in 2022?
-            </h3>
-            <p>JavaScript is the language used to degign logic for the web</p>
-          </div> */}
         </main>
       </div>
     </>
   );
 };
+// server side redering 
+
+export async function getServerSideProps(context){
+  let data = await  fetch("http://localhost:3000/api/blogs")
+  let allBlogs = await data.json()
+
+      return{
+        props:{allBlogs},//will be passed to the oage component as props
+      }
+}
 
 export default Blog;
