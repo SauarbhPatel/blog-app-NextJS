@@ -14,3 +14,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.blog h2{
+  font-size: 38px;
+}
