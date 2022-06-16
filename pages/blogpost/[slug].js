@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import { useRouter } from "next/router";
 import styles from "../../styles/Home.module.css";
-import * as fs from 'fs';
+import * as fs from "fs";
 
 //  Step 1 : Find the file corresponding to the slug
 //  Step 2 : Populate them inside the page
@@ -9,6 +9,9 @@ import * as fs from 'fs';
 const Slug = (props) => {
   const [blog, setBlog] = useState(props.myblog);
 
+  function createMarkup(textHtml) {
+    return { __html: textHtml };
+  }
   return (
     <>
       <style jsx>
@@ -22,7 +25,7 @@ const Slug = (props) => {
         <main className={styles.main}>
           <h1> {blog && blog.title}</h1>
           <hr />
-          <p>{blog && blog.content}</p>
+          {blog && <p dangerouslySetInnerHTML={createMarkup(blog.content)}></p>}
         </main>
       </div>
     </>
@@ -33,22 +36,20 @@ const Slug = (props) => {
 export async function getStaticPaths() {
   return {
     paths: [
-      { params: { slug : 'how-to-learn-javascript' } },
-      { params: { slug : 'how-to' } }
+      { params: { slug: "how-to-learn-javascript" } },
+      { params: { slug: "how-to" } },
     ],
-    fallback: true // false or 'blocking'
+    fallback: true, // false or 'blocking'
   };
 }
 export async function getStaticProps(context) {
   const { slug } = context.params;
 
-  let myBLog = await fs.promises.readFile(`blogdata/${slug}.json`,'utf-8')
+  let myBLog = await fs.promises.readFile(`blogdata/${slug}.json`, "utf-8");
   return {
-    props: { myblog :JSON.parse(myBLog) }, //will be passed to the oage component as props
+    props: { myblog: JSON.parse(myBLog) }, //will be passed to the oage component as props
   };
 }
-
-
 
 // server side redering
 // export async function getServerSideProps(context) {
