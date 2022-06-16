@@ -1,16 +1,15 @@
 import Head from "next/head";
-import Image from "next/image";
+// import Image from "next/image";
 import styles from "../styles/Home.module.css";
-
 
 export default function Home() {
   return (
     <div className={styles.container}>
       <style jsx>
         {`
-        h3{
-          font-size:28px
-        }
+          h3 {
+            font-size: 28px;
+          }
         `}
       </style>
       <Head>
@@ -22,7 +21,9 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Hunting Coder</h1>
-    <Image className={styles.myImg} src="/sf.jpg" alt="" width={192} height={128} />
+        {/* when you generate a Static site generation page then you didnot use Image Compoent */}
+        {/* <Image className={styles.myImg} src="/sf.jpg" alt="" width={192} height={128} /> */}
+        <img className={styles.myImg} src="/sf.jpg" width={192} height={128} alt="" />
         <p className={styles.description}>
           A blog for hunting coders by a hunting coder
         </p>
