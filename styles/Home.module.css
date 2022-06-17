@@ -27,18 +27,12 @@
 .title {
   margin: 0;
   line-height: 1.15;
-  font-size: 4rem;
+  font-size: 1.5rem;
   margin-bottom: 20px;
 }
 
-.title,
-.description {
+.title {
   text-align: center;
-}
-
-.description {
-  line-height: 1.5;
-  font-size: 1.5rem;
 }
 
 .code {
@@ -75,5 +69,13 @@
 }
 
 .myImg{
-  border-radius: 10px;
+  width: 157px;
+  height: 157px;
+  border-radius: 92px;
+}
+.btn{
+  color: white;
+  background-color: black;
+  padding: 7px;
+  cursor: pointer;
 }

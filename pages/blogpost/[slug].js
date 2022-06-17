@@ -38,6 +38,9 @@ export async function getStaticPaths() {
     paths: [
       { params: { slug: "how-to-learn-javascript" } },
       { params: { slug: "how-to" } },
+      { params: { slug: "how-to copy" } },
+      { params: { slug: "how-to copy 2" } },
+      { params: { slug: "how-to copy 3" } },
     ],
     fallback: true, // false or 'blocking'
   };

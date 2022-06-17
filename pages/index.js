@@ -20,27 +20,28 @@ export default function Home() {
       {/* <Script src="/sc.js" strategy="lazyOnload"></Script> */}
 
       <main className={styles.main}>
-        <h1 className={styles.title}>Hunting Coder</h1>
         {/* when you generate a Static site generation page then you didnot use Image Compoent */}
         {/* <Image className={styles.myImg} src="/sf.jpg" alt="" width={192} height={128} /> */}
-        <img className={styles.myImg} src="/sf.jpg" width={192} height={128} alt="" />
-        <p className={styles.description}>
-          A blog for hunting coders by a hunting coder
-        </p>
-
+        <img className={styles.myImg} src="/sf.jpg" alt="" />
+        <h1 className={styles.title}>&lt;HuntingCoder/&gt;</h1>
         <div className="blog">
           <h2>Letest Blogs</h2>
           <div className="blogItem">
             <h3>How to learn JavaScript in 2022?</h3>
-            <p>JavaScript is the language used to degign logic for the web</p>
+            <p>JavaScript is the language used to degign logic for the web Lorem ipsum dolor, sit amet consectetur adipisicing. Lorem ipsum dolor sit amet.</p>
+            <button className={styles.btn}>Read More...</button>
           </div>
           <div className="blogItem">
             <h3>How to learn JavaScript in 2022?</h3>
-            <p>JavaScript is the language used to degign logic for the web</p>
+            <p>JavaScript is the language used to degign logic for Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, ex. the web</p>
+            <button className={styles.btn}>Read More...</button>
+
           </div>
           <div className="blogItem">
             <h3>How to learn JavaScript in 2022?</h3>
-            <p>JavaScript is the language used to degign logic for the web</p>
+            <p>JavaScript is the language used to degign logic for the Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur laudantium similique rerum fugit! web</p>
+            <button className={styles.btn}>Read More...</button>
+
           </div>
         </div>
       </main>
